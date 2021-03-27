@@ -8,10 +8,10 @@ msd_labels = ['rock','pop','alternative','indie','electronic','female vocalists'
 sr = 16000
 
 # Instantiate a MonoLoader and run it in the same line
-audio = MonoLoader(filename='/home/casey/Downloads/Soft Piano Music_16000hz.wav', sampleRate=sr)()
+audio = MonoLoader(filename='audios/soft-piano.wav', sampleRate=sr)()
 
 # Instatiate the tagger and pass it the audio
-predictions = TensorflowPredictMusiCNN(graphFilename='msd-musicnn-1.pb')(audio)
+predictions = TensorflowPredictMusiCNN(graphFilename='models/msd-musicnn-1.pb')(audio)
 
 # Retrieve the top_n tags
 top_n = 3
