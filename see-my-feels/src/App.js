@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import logo from './assets/in-my-feels.gif';
 import './App.css';
+import {FileUploadPage} from './components/Upload'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Title">
+        <h1>See My Feels</h1>
+      </div>
+      <FileUploadPage />
+      <div className="Drake">
+        <img src={logo} alt="still loading..."/>
+      </div>
     </div>
   );
 }
