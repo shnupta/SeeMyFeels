@@ -1,8 +1,12 @@
 import numpy as np
 from essentia.standard import *
 
-
-msd_labels = ['rock','pop','alternative','indie','electronic','female vocalists','dance','00s','alternative rock','jazz','beautiful','metal','chillout','male vocalists','classic rock','soul','indie rock','Mellow','electronica','80s','folk','90s','chill','instrumental','punk','oldies','blues','hard rock','ambient','acoustic','experimental','female vocalist','guitar','Hip-Hop','70s','party','country','easy listening','sexy','catchy','funk','electro','heavy metal','Progressive rock','60s','rnb','indie pop','sad','House','happy']
+msd_labels = ['rock', 'pop', 'alternative', 'indie', 'electronic', 'female vocalists', 'dance', '00s',
+	      'alternative rock', 'jazz', 'beautiful', 'metal', 'chillout', 'male vocalists', 'classic rock',
+	      'soul', 'indie rock', 'Mellow', 'electronica', '80s', 'folk', '90s', 'chill', 'instrumental', 'punk',
+	      'oldies', 'blues', 'hard rock', 'ambient', 'acoustic', 'experimental', 'female vocalist', 'guitar',
+	      'Hip-Hop', '70s', 'party', 'country', 'easy listening', 'sexy', 'catchy', 'funk', 'electro',
+	      'heavy metal', 'Progressive rock', '60s', 'rnb', 'indie pop', 'sad', 'House', 'happy']
 
 # Our models take audio streams at 16kHz
 sr = 16000
@@ -22,4 +26,4 @@ averaged_predictions = np.mean(predictions, axis=0)
 
 # Sort the predictions and get the top N
 for i, l in enumerate(averaged_predictions.argsort()[-top_n:][::-1], 1):
-        print('{}: {}'.format(i, msd_labels[l]))
+    print('{}: {}'.format(i, msd_labels[l]))
