@@ -1,18 +1,27 @@
 .App {
   text-align: center;
+  align-items: center;
 }
 
 .Drake {
-  background-color: rgb(208, 76, 19);
+  background-color: rgb(208, 117, 19);
   margin:1em;
+  padding: 2.5em;
 }
 
 .Drake:hover {
   transform: scaleX(-1);
+  margin: 1em;
+  padding: 2.5em;
+}
+
+.Drake img {
+  width: 34rem;
+  height: 21rem;
 }
 
 .Title {
-  background-color: rgb(208, 76, 19);
+  background-color: rgb(208, 117, 19);
   margin:1em;
   min-height: 10vh;
   display: flex;
@@ -20,10 +29,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: oblique;
+  text-decoration: underline;
 }
