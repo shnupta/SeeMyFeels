@@ -1,44 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export function FileUploadPage(){
-    var isSelected = false;
-	const [selectedFile, setSelectedFile] = useState();
-	const [isFilePicked, setIsFilePicked] = useState(false);
-
-    const setIsSelected = (bool) => {
-        isSelected = bool;
-    };
-
-	const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-		setIsSelected(true);
-	};
-
-	const handleSubmission = () => {
-		const formData = new FormData();
-
-		formData.append('File', selectedFile);
-	};
-
-	return(
-   <div>
-			<input type="file" name="file" onChange={changeHandler} />
-			{isSelected ? (
-				<div>
-					<p>Filename: {selectedFile.name}</p>
-					<p>Filetype: {selectedFile.type}</p>
-					<p>Size in bytes: {selectedFile.size}</p>
-					<p>
-						lastModifiedDate:{' '}
-						{selectedFile.lastModifiedDate.toLocaleDateString()}
-					</p>
-				</div>
-			) : (
-				<p>Select a file to show details</p>
-			)}
-			<div>
-				<button onClick={handleSubmission}>Submit</button>
-			</div>
-		</div>
-	);
-}
+export class FileUploadPage extends React.Component {
+    constructor(props) {
+      // highlight-range{3}
+      super(props);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.fileInput = React.createRef();
+    }
+    handleSubmit(event) {
+      // highlight-range{3}
+      event.preventDefault();
+      alert(
+        `Selected file - ${this.fileInput.current.files[0].name}`
+      );
+    }
+  
+    render() {
+      // highlight-range{5}
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Upload file:
+            <input type="file" ref={this.fileInput} />
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      );
+    }
+  }
