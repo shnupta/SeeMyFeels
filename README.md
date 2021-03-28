@@ -1,5 +1,5 @@
 # SeeMyFeels
-Audio to Generative Art. IC Hello World 2021 Project entry.
+Audio to Generative Art. IC Hello World Hackathon 2021 Project entry.
 
 Ever really been into a song? Stuck in your feels and want a way to remember that track? Make it memorable, with a unique piece of art that represents that sound.
 
