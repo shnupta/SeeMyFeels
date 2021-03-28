@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template
 import requests
+import os
 from music_analysis.analyse import analyse
 from gen_art.generate_art import generate
-import os
 app = Flask(__name__)
 
 
@@ -20,7 +20,6 @@ def process():
     except:
         return "Could not open audio url"
 
-    os.chdir("..")
     happy, dance, aggressive, chill, acoustic = analyse('server/audio_files/temp.mp3')
     generate("server/out_imgs/" + "temp.png", happy, dance, aggressive, chill, acoustic)
     return "done!"
