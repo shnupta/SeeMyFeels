@@ -18,8 +18,16 @@ Parameters:
 2. Velocity
 3. Number of magnets
 4. Number of particles
-5. 
+5. Particle separation
+6. Force jitter
 '''
+
+magnet_force = 4
+velocity_scaling = 0.5
+magnet_range = 10 
+num_particles = 2000
+particle_separation = 30
+force_jitter = 0
 
 # Particle class
 class Particle:
@@ -104,7 +112,7 @@ def draw(num_magnets):
 
     magnets = []
     my_particles = []
-    # num_magnets = random.randint(2, 20)
+    num_magnets = random.randint(4, 4 + magnet_range)
     sum_x, sum_y = 0, 0
     sums = 0
 
@@ -121,32 +129,23 @@ def draw(num_magnets):
                 pole
         ))
 
-    # start_num = 360
-    # a = (math.pi*2)/start_num # 1 degree in radians
-    #
-    # for x in range(100, width-100, (width-200)//2):
-    #     for y in range(100, height-100, (height-200)//2):
-    #         for i in range(start_num):
-    #             xx = x + (math.sin(a*i)*random.randint(100,250)) + ((width-200)//2)
-    #             yy = y + (math.cos(a*i)*random.randint(100,250)) + ((height-200)//2)
-    #             vx = random.uniform(-1, 1)*0.5
-    #             vy = random.uniform(-1, 1)*0.5
-    #             my_particles.append(Particle(xx, yy, vx, vy))
-
-    size = 500
-
-    for x in range(size//2, width - size//2, 25):
-        for y in range(size//2, height - size//2, 25):
-            xx = x
-            yy = y
-            vx = 0
-            vy = 0
+    for x in range(0, width, width // math.sqrt(num_particles)):
+        for y in range(0, height, height // math.sqrt(num_particles)):
+            x_change = random.uniform(-1, 1) * particle_separation
+            y_change = random.uniform(-1, 1) * particle_separation
+            xx = x + x_change
+            yy = y + y_change
+            vx = random.uniform(-1, 1) * velocity_scaling 
+            vy = random.uniform(-1, 1) * velocity_scaling 
             my_particles.append(Particle(xx, yy, vx, vy, (1 - 123/255, 1 - 67/255, 1 - 151/255), (1 - 220/255, 1 - 36/255, 1 - 48/255)))
 
     for p in my_particles:
         for t in range(total_steps):
             for m in magnets:
-                sums = p.calculate_force(m.x, m.y, m.p)
+                f = magnet_force
+                if (force_jitter != 0):
+                    f = random.uniform(0.5, force_jitter) * magnet_force
+                sums = p.calculate_force(m.x, m.y, m.p * f)
                 sum_x = sum_x + sums[0]
                 sum_y = sum_y + sums[1]
 
