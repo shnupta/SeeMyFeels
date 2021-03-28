@@ -1,4 +1,4 @@
-from graphics.Vector import Vector as vec2
+from gen_art.graphics.Vector import Vector as vec2
 from noise import pnoise2
 from random import randint, choices
 from math import cos

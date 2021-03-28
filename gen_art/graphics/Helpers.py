@@ -3,8 +3,8 @@ from math import pi, hypot
 from numpy import where, cross
 from subprocess import call
 from sys import platform
-from graphics.Vector import Vector as vec2
-from graphics.Vector import sub_vec, add_vec
+from gen_art.graphics.Vector import Vector as vec2
+from gen_art.graphics.Vector import sub_vec, add_vec
 
 # Useful constants
 PI = pi

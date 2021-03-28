@@ -1,9 +1,10 @@
-import graphics.Config as config
+import gen_art.graphics.Config as config
 from numpy import clip
 from math import hypot, sqrt
-from graphics.Helpers import TWO_PI
-from graphics.Vector import Vector as vec2
+from gen_art.graphics.Helpers import TWO_PI
+from gen_art.graphics.Vector import Vector as vec2
 import cairo
+import colorsys
 
 
 # Circle class
@@ -118,6 +119,11 @@ def background(r, g, b, a):
 
 def color(r, g, b, a):
     config.Context.set_source_rgba(r, g, b, a)
+
+
+def color_hsv(h, s, v):
+    r, g, b = colorsys.hsv_to_rgb(h, s, v)
+    config.Context.set_source_rgb(r, g, b)
 
 
 def stroke():
