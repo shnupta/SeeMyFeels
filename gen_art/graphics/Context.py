@@ -1,8 +1,5 @@
 import cairo
-from uuid import uuid4
-from gen_art.graphics.Helpers import does_path_exist, open_file
-from os import path
-from datetime import datetime
+from gen_art.graphics.Helpers import open_file
 
 
 class DrawContext:
