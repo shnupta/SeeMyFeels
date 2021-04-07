@@ -6,6 +6,7 @@
 import os
 import numpy as np
 from essentia.standard import *
+from definitions import ROOT_DIR
 
 # Our models take audio streams at 16kHz
 sr = 16000
@@ -16,27 +17,27 @@ def analyse(path):
     audio = MonoLoader(filename=path, sampleRate=sr)()
 
     # Get happiness score!
-    happy_prediction = TensorflowPredictMusiCNN(graphFilename='models/mood_happy-musicnn-msd-2.pb')(audio)
+    happy_prediction = TensorflowPredictMusiCNN(graphFilename=os.path.join(ROOT_DIR, 'models/mood_happy-musicnn-msd-2.pb'))(audio)
     averaged_predictions = np.mean(happy_prediction, axis=0)
     happy_score = (1 + averaged_predictions[0] - averaged_predictions[1]) / 2
 
     # Get danceability score!
-    danceability_prediction = TensorflowPredictMusiCNN(graphFilename='models/danceability-musicnn-msd-2.pb')(audio)
+    danceability_prediction = TensorflowPredictMusiCNN(graphFilename=os.path.join(ROOT_DIR, 'models/danceability-musicnn-msd-2.pb'))(audio)
     averaged_predictions = np.mean(danceability_prediction, axis=0)
     danceability_score = (1 + averaged_predictions[0] - averaged_predictions[1]) / 2
 
     # Get aggressiveness score!
-    aggressive_prediction = TensorflowPredictMusiCNN(graphFilename='models/mood_aggressive-musicnn-msd-2.pb')(audio)
+    aggressive_prediction = TensorflowPredictMusiCNN(graphFilename=os.path.join(ROOT_DIR, 'models/mood_aggressive-musicnn-msd-2.pb'))(audio)
     averaged_predictions = np.mean(aggressive_prediction, axis=0)
     aggressive_score = (1 + averaged_predictions[0] - averaged_predictions[1]) / 2
 
     # Get chill score!
-    chill_prediction = TensorflowPredictMusiCNN(graphFilename='models/mood_relaxed-musicnn-msd-2.pb')(audio)
+    chill_prediction = TensorflowPredictMusiCNN(graphFilename=os.path.join(ROOT_DIR, 'models/mood_relaxed-musicnn-msd-2.pb'))(audio)
     averaged_predictions = np.mean(chill_prediction, axis=0)
     chill_score = (1 + averaged_predictions[1] - averaged_predictions[0]) / 2
 
     # Get acoustic score!
-    acoustic_prediction = TensorflowPredictMusiCNN(graphFilename='models/mood_acoustic-musicnn-msd-2.pb')(audio)
+    acoustic_prediction = TensorflowPredictMusiCNN(graphFilename=os.path.join(ROOT_DIR, 'models/mood_acoustic-musicnn-msd-2.pb'))(audio)
     averaged_predictions = np.mean(acoustic_prediction, axis=0)
     acoustic_score = (1 + averaged_predictions[0] - averaged_predictions[1]) / 2
 
