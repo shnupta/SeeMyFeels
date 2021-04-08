@@ -1,0 +1,96 @@
+/* General */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: pt-serif, serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+.left-justify {
+    text-align: left;
+}
+
+/* Text */
+
+h1, h2 {
+    font-family: eloquent-jf-pro, serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: #ed213a;
+    font-weight: 700;
+}
+
+a:hover {
+    color: #ff304a;
+}
+
+.text-container {
+    margin: 0 auto;
+}
+
+.text-container.short {
+    width: 450px;
+}
+
+.left-justify .text-container {
+    margin: initial;
+}
+
+/* Sections */
+
+.section {
+    padding: 100px 40px;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3em;
+}
+
+.section.red {
+    color: white;
+    background: #ed213a;  /* fallback for old browsers */
+    background: -webkit-radial-gradient(at 10% 10%, #ed213a, #93291e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: radial-gradient(at 10% 10%, #ed213a, #93291e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.section.white {
+    color: black;
+    background: white;
+}
+
+.section.black {
+    color: white;
+    background: #212121;
+}
+
+.section.black .section-title {
+    color: #ed213a;
+}
+
+.section.left-justify .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section.more-top-space {
+    padding-top: 140px;
+}
+
+/* Footer */
+
+#footer {
+    padding: 30px 40px;
+}

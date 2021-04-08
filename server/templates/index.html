@@ -2,23 +2,79 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Index</title>
+        <title>SeeMyFeels</title>
+        <link rel="stylesheet" href="https://use.typekit.net/kxs8tfx.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-        <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
     </head>
     <body>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                 </ul>
-            {% endif %}
-        {% endwith %}
-        <form role="form" method='POST' action='/process' enctype="multipart/form-data">
-            <input type="file" name="file" />
-            <input type = "submit"/>
-        </form>
+        <div id="loading-overlay">
+            <div class="boxes">
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <h1>Generating Image</h1>
+            <div class="text-container short">
+                <p>Analysing the music and generating some art. This may take a minute or so.</p>
+            </div>
+        </div>
+        <div class="section red" id="top-section">
+            <h1 id="site-title">SeeMyFeels</h1>
+            <div class="text-container short">
+                <p>Ever <strong>really</strong> been into a song? Stuck in your feels and want a way to remember that track? Make it <strong>memorable</strong>, with a <strong>unique</strong> piece of art that represents that sound.</p>
+            </div>
+        </div>
+        <div class="section white more-top-space">
+            <form id="process-audio" role="form" method='POST' action='/process' enctype="multipart/form-data">
+                <label class="btn upload-btn" onclick="uploadClicked()"><span>Upload Audio</span>
+                    <input type="file" name="file" id="audio-file-input" />
+                </label>
+                <label class="btn submit-btn">Generate
+                    <input type="submit" />
+                </label>
+            </form>
+            <div class="text-container short">
+                <p>Hit the button above, upload your favourite song or audio, and we’ll generate you an image that “Looks like the music sounds” Try it out!</p>
+            </div>
+        </div>
+        <div class="section black left-justify">
+            <div class="container">
+                <h2 class="section-title">About the project</h2>
+                <div class="text-container long">
+                    <p>This project was created in large part in 24 hours, as a submission to Imperial College London’s 2021 <a href="https://ichelloworld.org/">IC Hello World</a> hackathon.</p>
+                    <p>We really wanted to explore the more creative and artistic side of computing, which is often overlooked in favour of its more prevalent scientific uses. We had an idea that we found really exciting, and we rolled with it.</p>
+                    <p>SeeMyFeels takes as input an audio file, analyses its characteristics using a pre-trained neural network, and then uses those characteristics to generate images that we feel represent that music.</p>
+                    <p>You can find a more detailed explanation of the project <a href="https://devpost.com/software/seemyfeels">here</a>, and the source code <a href="https://github.com/shnupta/SeeMyFeels">here</a>!</p>
+                </div>
+            </div>
+        </div>
+        <div class="section red left-justify" id="footer">
+            <div class="container">
+                Project by Casey Williams, Alex Moraru and Jules Dehon
+            </div>
+        </div>
     </body>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </html>
