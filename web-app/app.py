@@ -10,7 +10,7 @@ ALLOWED_EXTENSIONS = {'mp3', 'wav'}
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20MB
-app.config['UPLOAD_FOLDER'] = os.path.join(ROOT_DIR, 'server/static/upload')
+app.config['UPLOAD_FOLDER'] = os.path.join(ROOT_DIR, 'web-app/static/upload')
 app.secret_key = 'q=Lxcbh59T!hA_0Qv%Eb'
 
 
@@ -26,7 +26,7 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
 
-    generated_img_folder = os.path.join(ROOT_DIR, 'server/static/img/generated')
+    generated_img_folder = os.path.join(ROOT_DIR, 'web-app/static/img/generated')
     now = time.time()
     for f in os.listdir(generated_img_folder):
         f = os.path.join(generated_img_folder, f)
