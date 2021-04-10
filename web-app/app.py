@@ -11,7 +11,7 @@ ALLOWED_EXTENSIONS = {'mp3', 'wav'}
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20MB
 app.config['UPLOAD_FOLDER'] = os.path.join(ROOT_DIR, 'web-app/static/upload')
-app.secret_key = 'q=Lxcbh59T!hA_0Qv%Eb'
+app.secret_key = uuid.uuid4().hex
 
 
 def allowed_file(filename):
