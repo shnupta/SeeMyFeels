@@ -1,2 +1,2 @@
 # This will eventually run our whole app
-cd test && python3 test.py
+cd web-app && python3 run.py

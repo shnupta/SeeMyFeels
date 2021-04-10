@@ -8,5 +8,9 @@ python:
 before_install:
   - docker build -t shnupta/seemyfeels .
 
-script:
-  - docker run shnupta/seemyfeels
+jobs:
+  include:
+    - stage: test
+      script: docker run -it --entrypoint=/bin/bash shnupta/seemyfeels -c 'python3 test/test.py'
+    - stage: deploy
+      script: echo A fake deploy!!

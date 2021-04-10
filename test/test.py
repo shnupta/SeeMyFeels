@@ -1,4 +1,5 @@
 import os
+
 from music_analysis.analyse import analyse
 from gen_art.generate_art import generate
 from definitions import ROOT_DIR
