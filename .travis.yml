@@ -5,14 +5,12 @@ language: python
 python:
 - '3.8'
 
-before_install:
-- docker build -t shnupta/seemyfeels .
-
 install: pip --version
 
 jobs:
   include:
   - stage: test
+    before_install: docker build -t shnupta/seemyfeels .
     script: docker run -it --entrypoint=/bin/bash shnupta/seemyfeels -c 'python3 test/test.py'
   - stage: deploy
     script: skip
@@ -21,3 +19,5 @@ jobs:
       api_key:
         secure: mFOaDKf0wYk7biZoEC0NWlIkLAXW6RxnYBuVjpQuMLCr95knYauVl3BJPHAXcZZnaFY6MG51ondn7YKMihmNVKL6Sow2vvia630ye0rWYwkUfjbEKe83GpCUR8kPV7r/v4zrCwdrarLpjR2uScPbDHSKg9sWe5iopV+5QiYjxIj7taToZzqJb6th9z98rf7khNJXJ33AOp3iJXEQfB4Z8yamW+RweXkvio7BbFIoMMveUX0sRxnvRFXKLVRgJ9HX+s5CbrSHFvzz+dtYCWvybRNZX5sQPV20VnbnWYPRqdPP6Dr9YAjAfc1IYpVSwCKdoua8NMhIqgF8Ev6Etzvl8I2fWMSsibdW+5GLuO9mpTUGU5gYHOnMFX39T3mvEKb2x2kIpgKqOWaxuqIxAX28OntPAciruK7jjO7X01TBFhtZcAvdT/IBwsdCX6fD3Fpx3JYkESWGGxE6y93PmgIHFeqp3EGRvqNchUZ1GQwzdTRwgWxU20JYqx+BneEkgsVgE8+vwGXBaMtIshnqAS1WnuEXuRspap4zyoYZQ19i73cfqhZxfwCt3medV1DUOLVEoZ/WVKEoZzCv74SZnF6pIVipb3wHIaSKRauGwcuAk9wqBbAr0O0NRF0UZY7M/hzqB5GgTQt75zoSMRS36cGfKfUAXXzfbWVimbUfXI7Cf60=
         app: see-my-feels
+      on:
+        all_branches: true
