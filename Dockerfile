@@ -15,4 +15,4 @@ RUN pip3 install -r requirements.txt
 
 CMD ["sh", "run.sh"]
 
-EXPOSE 8080
+EXPOSE $PORT
