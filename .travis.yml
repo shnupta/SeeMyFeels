@@ -8,6 +8,8 @@ python:
 before_install:
   - docker build -t shnupta/seemyfeels .
 
+install: pip --version # prevents travis from trying to install requirements.txt
+
 jobs:
   include:
     - stage: test

@@ -1,7 +1,7 @@
 FROM mtgupf/essentia-tensorflow:latest
 
 RUN apt-get update
-RUN apt-get install -y libcairo2-dev libjpeg-dev libgif-dev uwsgi gcc
+RUN apt-get install -y libcairo2-dev libjpeg-dev libgif-dev pkg-config python3-dev
 
 RUN mkdir /smf
 

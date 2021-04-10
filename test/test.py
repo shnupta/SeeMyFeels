@@ -5,6 +5,7 @@ from gen_art.generate_art import generate
 from definitions import ROOT_DIR
 
 if __name__ == '__main__':
+    print("Testing....!")
     songs = os.listdir(os.path.join(ROOT_DIR, 'test/audios'))
     for song in songs:
         happy, dance, aggressive, chill, acoustic = analyse(os.path.join(ROOT_DIR, 'test/audios/' + song))
